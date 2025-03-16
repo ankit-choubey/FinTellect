@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FinGenius</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .dashboard-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.4);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .dashboard-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 24px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            color: #fff;
+            font-weight: 600;
+            border-radius: 30px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.8);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.6);
+            }
+            to {
+                text-shadow: 0px 0px 20px rgba(0, 255, 255, 0.8);
+            }
+        }
+
+        /* Floating Circles */
+        .circle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            top: 5%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .circle:nth-child(2) {
+            top: 30%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(3) {
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <h1>🚀 FinGenius Dashboard 🚀</h1>
+        <p>Manage your financial analytics and transactions with ease.</p>
+        
+        <div class="dashboard-links">
+            <a href="/transactions" class="btn"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="/analytics" class="btn"><i class="fas fa-chart-line"></i> Analytics</a>
+            <a href="/" class="btn"><i class="fas fa-home"></i> Home</a>
+        </div>
+    </div>
+
+    <!-- Floating circles -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+</body>
+</html>

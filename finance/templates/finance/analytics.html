@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Chart.js -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .chart-container {
+            width: 80%;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        canvas {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📊 Analytics Dashboard</h1>
+
+    <!-- Transaction Trends Chart -->
+    <div class="chart-container">
+        <h3>📈 Transaction Trends</h3>
+        <canvas id="transactionChart"></canvas>
+    </div>
+
+    <!-- Category-wise Spending Chart -->
+    <div class="chart-container">
+        <h3>💳 Spending by Category</h3>
+        <canvas id="categoryChart"></canvas>
+    </div>
+
+    <!-- Monthly Expense Chart -->
+    <div class="chart-container">
+        <h3>📅 Monthly Expense Overview</h3>
+        <canvas id="monthlyExpenseChart"></canvas>
+    </div>
+
+    <script>
+        // Fetching data from Django backend
+        const transactionData = JSON.parse('{{ transaction_data|safe }}');  // Passed from views.py
+        const categoryData = JSON.parse('{{ category_data|safe }}');  // Passed from views.py
+        const monthlyData = JSON.parse('{{ monthly_data|safe }}');  // Passed from views.py
+
+        // Transaction Trends Chart
+        new Chart(document.getElementById("transactionChart"), {
+            type: 'line',
+            data: {
+                labels: transactionData.dates,
+                datasets: [{
+                    label: "Transactions",
+                    data: transactionData.amounts,
+                    borderColor: "#42A5F5",
+                    backgroundColor: "rgba(66, 165, 245, 0.2)",
+                    fill: true
+                }]
+            }
+        });
+
+        // Spending by Category Chart
+        new Chart(document.getElementById("categoryChart"), {
+            type: 'pie',
+            data: {
+                labels: categoryData.labels,
+                datasets: [{
+                    data: categoryData.values,
+                    backgroundColor: ["#ff6384", "#36a2eb", "#ffce56", "#4bc0c0", "#9966ff"]
+                }]
+            }
+        });
+
+        // Monthly Expense Chart
+        new Chart(document.getElementById("monthlyExpenseChart"), {
+            type: 'bar',
+            data: {
+                labels: monthlyData.months,
+                datasets: [{
+                    label: "Expenses",
+                    data: monthlyData.values,
+                    backgroundColor: "#ffce56"
+                }]
+            }
+        });
+    </script>
+
+</body>
+</html>
