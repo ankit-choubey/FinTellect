@@ -1,1 +1,1 @@
-# FinGenius
+# FinTellect
