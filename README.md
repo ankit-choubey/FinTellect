@@ -28,7 +28,7 @@ Fintellect runs on an **Event-Driven Financial NLP Pipeline**, optimized for hig
 1.  **Ingestion Layer**: Android-level hooks capture raw transactional SMS/UPI strings in real-time.
 2.  **Hybrid Parsing Engine**:
     * **L1 (Fast Path)**: Regex patterns instantly extract `Amount`, `Merchant`, and `Date` from standard bank formats (HDFC, SBI, ICICI).
-    * **L2 (Deep Path)**: Complex or ambiguous strings are routed to **Google Gemini Pro** via LangChain for Zero-Shot Entity Extraction.
+    * **L2 (Deep Path)**: Complex or ambiguous strings are routed to **Meta Ollama 8B** via LangChain for Zero-Shot Entity Extraction.
 3.  **Contextual Retrieval (RAG)**: The system queries a **Vector Database (FAISS/ChromaDB)** to retrieve the user's historical spending vectors and current budget constraints.
 4.  **Decision Logic**:
     * **Fraud Detection**: Anomaly detection algorithms (Isolation Forest) check for location/value variances.
@@ -54,7 +54,7 @@ Fintellect runs on an **Event-Driven Financial NLP Pipeline**, optimized for hig
 | **Core Backend** | Python (Django REST Framework) | API Orchestration & Business Logic |
 | **Async Queue** | Celery + Redis | Handling high-concurrency transaction streams |
 | **Database** | MongoDB | Storing polymorphic transaction data (NoSQL) |
-| **AI Engine** | Google Gemini Pro | Zero-Shot Classification & Financial Advice |
+| **AI Engine** | Meta Ollama 8B | Zero-Shot Classification & Financial Advice |
 | **Orchestration** | LangChain | LLM Chain Management & Prompt Engineering |
 | **Vector Store** | FAISS / ChromaDB | RAG Implementation for Financial Context |
 | **Frontend** | React / Next.js | Reactive User Interface |
@@ -91,7 +91,7 @@ Create a `.env` file in the root directory:
 
 ```ini
 DJANGO_SECRET_KEY=your_secret_key
-LLM_API_KEY=your_gemini_api_key
+LLM_API_KEY=your_llm_api_key
 MONGO_URI=mongodb://localhost:27017/fintellect
 REDIS_URL=redis://localhost:6379/0
 
