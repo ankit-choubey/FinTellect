@@ -1,4 +1,4 @@
-# 🏦 Fintellect AI: The Autonomous Financial Sentinel
+# Fintellect AI: The Autonomous Financial Sentinel
 
 [![Status](https://img.shields.io/badge/Status-Active%20Development-success.svg)]()
 [![Backend](https://img.shields.io/badge/Django-REST%20Framework-red)]()
